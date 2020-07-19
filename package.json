@@ -1,0 +1,51 @@
+{
+    "author": "BRAHIM BOUSSADJRA",
+    "name": "vueye-timeline",
+    "version": "0.1.0",
+    "private": false,
+    "description": "A timeline created using Vue.js",
+    "main": "./build/vueye-timeline.common.js",
+    "scripts": {
+        "serve": "vue-cli-service serve",
+        "build": "vue-cli-service build",
+        "bundle": "vue-cli-service build --dest build --target lib --name vueye-timeline ./src/components/VueyeTimeline.vue",
+        "docs:dev": "vuepress dev docs --host localhost",
+        "docs:build": "vuepress build docs"
+    },
+    "dependencies": {
+        "core-js": "^3.6.4",
+        "vue": "^2.6.11"
+    },
+    "devDependencies": {
+        "@vue/cli-plugin-babel": "^4.2.0",
+        "@vue/cli-service": "^4.2.0",
+        "axios": "^0.19.2",
+        "node-sass": "^4.12.0",
+        "sass-loader": "^8.0.2",
+        "vue-template-compiler": "^2.6.11"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/boussadjra/vueye-timeline.git"
+    },
+    "license": "MIT",
+    "homepage": "https://boussadjra.github.io/vueye-timeline/",
+    "browserslist": [
+        "> 1%",
+        "last 2 versions"
+    ],
+    "files": [
+        "build/vueye-timeline.common.js",
+        "build/*.css",
+        "*.md"
+    ],
+    "keywords": [
+        "vue.js",
+        "vuejs",
+        "timeline",
+        "vueye-timeline",
+        "timeline",
+        "vue component",
+        "web component"
+    ]
+}
