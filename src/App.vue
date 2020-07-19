@@ -2,7 +2,7 @@
   <div id="app">
     <VueyeTimeline :items="items">
       <template v-slot:opposite="{item}">
-        <h1>{{item.year}}</h1>
+        <h1 :style="{color:item.styleConfig.background}">{{item.year}}</h1>
       </template>
     </VueyeTimeline>
   </div>
@@ -24,7 +24,7 @@ export default {
         year: 2010,
 
         styleConfig: {
-          background: "#d7c7f1",
+          background: "#ffc1bd",
           color: "#545454",
           dotColor: "#2244e9",
           width: "280px"
@@ -37,7 +37,7 @@ export default {
         year: 2014,
 
         styleConfig: {
-          background: "#d7c7f1",
+          background: "#e7d8ff",
           color: "#545454",
           dotColor: "#2244e9"
         }
@@ -49,8 +49,8 @@ export default {
         year: 2016,
 
         styleConfig: {
-          background: "#d7c7f1",
-          color: "#545454",
+          background: "#673AB7",
+          color: "#eee",
           dotColor: "#2244e9"
         }
       },
@@ -61,7 +61,7 @@ export default {
         year: 2019,
 
         styleConfig: {
-          background: "#d7c7f1",
+          background: "#CDDC39",
           color: "#545454",
           dotColor: "#2244e9"
         }
@@ -85,6 +85,7 @@ export default {
   flex-direction: column;
   // justify-content: center;
   align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 pre {

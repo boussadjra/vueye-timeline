@@ -1,5 +1,6 @@
 # Vueye Timeline
 
+It's a cool Vue.js component used to show item set distributed by time.
 
 # Installation
 
@@ -10,141 +11,115 @@
 ```js
 <template>
   <div id="app">
-    <vueye-timeline v-model="date" color="#4466ee" format="dd/mm/yyyy"/>
+    <VueyeTimeline :items="items">
+      <template v-slot:opposite="{item}">
+        <h1>{{item.year}}</h1>
+      </template>
+    </VueyeTimeline>
   </div>
+</template>
+    </VueyeTimeline>
+</div>
 </template>
 
 <script>
-import VueyeTimeline from "vueye-timeline";
+import VueyeTimeline from "./components/VueyeTimeline.vue";
 export default {
   name: "App",
   data: () => ({
-   date: {
-      value:new Date(),
-      formattedValue:''
-    }
+    items: [
+      {
+        title: "Item 1",
+        body:
+          "Lorem ipsum, dolor sit amvoluptate sunt eveniet ducimus totam doloribus neque vitae nam quasi atque quisquam similique unde, nemo ipsum molestiae?",
+        year: 2010,
+
+        styleConfig: {
+          background: "#d7c7f1",
+          color: "#545454",
+          dotColor: "#2244e9",
+          width: "280px"
+        }
+      },
+      {
+        title: "Item 2",
+        body:
+          "Lorem ipsum, dolor sit amvoluptate sunt eveniet ducimus totam doloribus neque vitae nam quasi atque quisquam similique unde, nemo ipsum molestiae?",
+        year: 2014,
+
+        styleConfig: {
+          background: "#d7c7f1",
+          color: "#545454",
+          dotColor: "#2244e9"
+        }
+      },
+      {
+        title: "Item 3",
+        body:
+          "Lorem ipsum, dolor sit amvoluptate sunt eveniet ducimus totam doloribus neque vitae nam quasi atque quisquam similique unde, nemo ipsum molestiae?",
+        year: 2016,
+
+        styleConfig: {
+          background: "#d7c7f1",
+          color: "#545454",
+          dotColor: "#2244e9"
+        }
+      },
+      {
+        title: "Item 4",
+        body:
+          "Lorem ipsum, dolor sit amvoluptate sunt eveniet ducimus totam doloribus neque vitae nam quasi atque quisquam similique unde, nemo ipsum molestiae?",
+        year: 2019,
+
+        styleConfig: {
+          background: "#d7c7f1",
+          color: "#545454",
+          dotColor: "#2244e9"
+        }
+      }
+    ]
   }),
+
+  methods: {},
   components: {
     VueyeTimeline
   }
 };
 </script>
-```
 
-In `main.js` use the `composition-api` plugin :
+<style lang="scss">
+#app {
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-```js
-import Vue from 'vue';
-import App from './App.vue';
-import VueComp from '@vue/composition-api';
-Vue.config.productionTip = false;
 
-Vue.use(VueComp);
+</style>
 
-new Vue({
-	render: h => h(App),
-}).$mount('#app');
 ```
 
 # Demo
 
-[Date picker Demo](https://boussadjra.github.io/vueye-timeline/)
+[Timeline Demo](https://boussadjra.github.io/vueye-timeline/)
 
 # props and directives
 
-| prop            | description                                                                     | default      |
-| --------------- | ------------------------------------------------------------------------------- | ------------ |
-| format          | Provide the date format                                                         | 'yyyy-mm-dd' |
-| customFormatter | Define a custom formatter as a function that takes the date object as parameter | undefined    |
-| color           | The main color                                                                  | #5118ac      |
-
-**`v-model`** has a value an object with two fields
-
--   `value` : the Date object instance.
--   `formattedValue` : the date value returned as formatted string
-
-> **Note :**
-The clear icon **×** doesn't clear the input value but It initialize the date value to the current year (January 1st, currentYear) 
-### Available formats :
-
-The `format` prop could accept one of the following formats as a value :
-
-    "yyyy/mm/dd", "dd/mm/yyyy", "mm/dd/yyyy", "yyyy-mm-dd", "dd-mm-yyyy", "mm-dd-yyyy"
-
-The formats listed above are limited and they may not respond to your use case,
-so you could define your own formatter and pass it as value of the `customFormatter` prop
-
-```js
-template>
-  <div id="app">
-    <vueye-timeline v-model="date" color="#4466ee" :customFormatter="customFormatter"/>
-  </div>
-</template>
-
-<script>
-import VueyeTimeline from "vueye-timeline";
-export default {
-  name: "App",
-  data: () => ({
-    date: {
-      value: new Date(),
-      formattedValue: ""
-    }
-  }),
-  methods: {
-    customFormatter(date) {
-      let months = [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December"
-      ];
-      let weekdays = [
-        "Sunday",
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday"
-      ];
-
-      const _month = date.getMonth();
-      const _weekday = date.getDay();
-      let day = date.getDate();
-      switch (day) {
-        case 1:
-          day = "1st";
-          break;
-        case 2:
-          day = "2nd";
-          break;
-        case 3:
-          day = "3rd";
-          break;
-        default:
-          day = day + "th";
-          break;
-      }
-     let _dateString = `${weekdays[_weekday]} ${
-        months[_month]
-      }, ${day} ${date.getFullYear()}`;
-      return _dateString;
-    }
-  },
-  components: {
-    VueyeTimeline
-  }
-};
-</script>
+| prop  | description              | default |
+| ----- | ------------------------ | ------- |
+| items | the item set provided to | []      |
 
 
-```
+## items config:
+
+  each item could have the following structure :
+
+  -**title** : the item title which is shown in bold style
+  
+  -**body** : the item content.
+
+  -**styleConfig** : the item style like background, color and width.
+
