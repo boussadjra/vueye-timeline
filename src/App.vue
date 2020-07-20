@@ -1,8 +1,12 @@
 <template>
   <div id="app">
     <VueyeTimeline :items="items">
+      <template v-slot:content="{item}">
+        <h2>{{item.title}}</h2>
+        <div>{{item.body}}</div>
+      </template>
       <template v-slot:opposite="{item}">
-        <h1 :style="{color:item.styleConfig.background}">{{item.year}}</h1>
+        <h1 :style="{...item.styleConfig,padding:'0 4px 0 4px','border-radius':'4px'}">{{item.year}}</h1>
       </template>
     </VueyeTimeline>
   </div>
@@ -26,8 +30,7 @@ export default {
         styleConfig: {
           background: "#ffc1bd",
           color: "#545454",
-          dotColor: "#2244e9",
-          width: "280px"
+          dotColor: "#2244e9"
         }
       },
       {

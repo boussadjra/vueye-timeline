@@ -2,8 +2,12 @@
   <div class="ve-tl__wrapper">
     <div class="ve-tl__item" v-for="(item, index) in items" :key="index">
       <div class="ve-tl__item-content" :style="item.styleConfig?item.styleConfig:{}">
+       
+
+       <slot :item="item" name="content">
         <h3 class="ve-tl__item-content_title">{{item.title}}</h3>
         <div class="ve-tl__item-content_body">{{item.body}}</div>
+       </slot>
       </div>
       <div class="ve-tl__item_divider">
       <div class="ve-tl__item_divider_dot" :style="{background:item.styleConfig?item.styleConfig.dotColor:'white'}">

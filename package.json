@@ -3,7 +3,7 @@
     "name": "vueye-timeline",
     "version": "0.1.1",
     "private": false,
-    "description": "A timeline created using Vue.js",
+    "description": "A timeline component created using Vue.js",
     "main": "./build/vueye-timeline.common.js",
     "scripts": {
         "serve": "vue-cli-service serve",
